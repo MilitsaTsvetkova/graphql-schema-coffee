@@ -1,0 +1,11 @@
+type Coffee {
+  id: ID! // ID (unique identifier) - non-nullable (required)
+  name: String! // String - non-nullable (required)
+  brand: String! // String - non-nullable (required)
+  flavors: [String!]! // non-nullable Array of non-nullable String's
+}
+
+type Query {
+  coffees: [Coffee!]! 
+}
+

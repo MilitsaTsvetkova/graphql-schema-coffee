@@ -1,3 +1,6 @@
+"""
+GraphQL schema for Coffee types and queries
+"""
 type Coffee {
   id: ID!
   name: String!
@@ -7,4 +10,5 @@ type Coffee {
 
 type Query {
   coffees: [Coffee!]!
+  coffee(id: ID!): Coffee
 }

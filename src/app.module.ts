@@ -28,6 +28,7 @@ import { Tea } from './graphql';
       database: 'postgres',
       autoLoadEntities: true,
       synchronize: true,
+      logging: ['query'],
     }),
     CoffeesModule,
   ],

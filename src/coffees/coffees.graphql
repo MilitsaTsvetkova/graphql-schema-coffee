@@ -17,6 +17,7 @@ type Coffee implements Drink {
   brand: String!
   flavors: [Flavor!]
   createdAt: Date
+  type: CoffeeType
 }
 
 type Flavor {
@@ -24,26 +25,35 @@ type Flavor {
   name: String!
 }
 
+union DrinkResult = Coffee | Tea
+
 input CreateCoffeeInput {
   name: String!
   brand: String!
   flavors: [String!]!
+  type: CoffeeType
 }
 
 input UpdateCoffeeInput {
   name: String
   brand: String
   flavors: [String!]
+  type: CoffeeType
 }
 
 type Query {
   coffees: [Coffee!]!
   coffee(id: ID!): Coffee!
-  drinks: [Drink!]!
+  drinks: [DrinkResult!]!
 }
 
 type Mutation {
   createCoffee(createCoffeeInput: CreateCoffeeInput!): Coffee!
   updateCoffee(id: ID!, updateCoffeeInput: UpdateCoffeeInput!): Coffee!
   removeCoffee(id: ID!): Coffee!
+}
+
+enum CoffeeType {
+  ARABICA
+  ROBUSTA
 }

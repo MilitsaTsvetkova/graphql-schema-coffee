@@ -57,3 +57,7 @@ enum CoffeeType {
   ARABICA
   ROBUSTA
 }
+
+type Subscription {
+  coffeeAdded: Coffee!
+}

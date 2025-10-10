@@ -1,10 +1,10 @@
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
+import { GraphQLModule } from '@nestjs/graphql';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { GraphQLModule } from '@nestjs/graphql';
-import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { CoffeesModule } from './coffees/coffees.module';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { DateScalar } from './common/scalars/date.scalar/date.scalar';
 import { DrinksResolver } from './drinks/drinks.resolver';
 import { Tea } from './graphql';
@@ -17,6 +17,7 @@ import { Tea } from './graphql';
       buildSchemaOptions: {
         orphanedTypes: [Tea], // 👈
       },
+      installSubscriptionHandlers: true,
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
